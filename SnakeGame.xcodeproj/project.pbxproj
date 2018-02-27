@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7D0A6AB120443C27002E5E0E /* worldScene.scn in Resources */ = {isa = PBXBuildFile; fileRef = 7D0A6AB020443C27002E5E0E /* worldScene.scn */; };
 		7D2E5F8520441F7D00B4CBB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2E5F8420441F7D00B4CBB3 /* AppDelegate.swift */; };
 		7D2E5F9020441F7D00B4CBB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D2E5F8E20441F7D00B4CBB3 /* Main.storyboard */; };
 		7D2E5F9520441F7D00B4CBB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D2E5F9320441F7D00B4CBB3 /* LaunchScreen.storyboard */; };
@@ -24,13 +23,13 @@
 		7D43C9B1204425B400CB2FF1 /* snakeHead.scn in Resources */ = {isa = PBXBuildFile; fileRef = 7D43C9A5204425B400CB2FF1 /* snakeHead.scn */; };
 		7D43C9B62044260400CB2FF1 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D43C9B32044260300CB2FF1 /* GameController.swift */; };
 		7D43C9B72044260400CB2FF1 /* Mushroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D43C9B42044260300CB2FF1 /* Mushroom.swift */; };
-		7D43C9B82044260400CB2FF1 /* Snake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D43C9B52044260300CB2FF1 /* Snake.swift */; };
+		7D43C9B82044260400CB2FF1 /* SnakeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D43C9B52044260300CB2FF1 /* SnakeController.swift */; };
 		7D43C9BA2044266400CB2FF1 /* main.scn in Resources */ = {isa = PBXBuildFile; fileRef = 7D43C9B92044266300CB2FF1 /* main.scn */; };
 		7D43C9C020442F2E00CB2FF1 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D43C9BF20442F2D00CB2FF1 /* GameViewController.swift */; };
+		7DF543D82045DDF800C172FD /* worldScene.scn in Resources */ = {isa = PBXBuildFile; fileRef = 7DF543D72045DDF800C172FD /* worldScene.scn */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7D0A6AB020443C27002E5E0E /* worldScene.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = worldScene.scn; path = "SnakeGame/common scenkit assets/worldScene.scn"; sourceTree = SOURCE_ROOT; };
 		7D2E5F8120441F7D00B4CBB3 /* SnakeGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnakeGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D2E5F8420441F7D00B4CBB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D2E5F8F20441F7D00B4CBB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -49,9 +48,10 @@
 		7D43C9A5204425B400CB2FF1 /* snakeHead.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = snakeHead.scn; sourceTree = "<group>"; };
 		7D43C9B32044260300CB2FF1 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		7D43C9B42044260300CB2FF1 /* Mushroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mushroom.swift; sourceTree = "<group>"; };
-		7D43C9B52044260300CB2FF1 /* Snake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snake.swift; sourceTree = "<group>"; };
+		7D43C9B52044260300CB2FF1 /* SnakeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnakeController.swift; sourceTree = "<group>"; };
 		7D43C9B92044266300CB2FF1 /* main.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = main.scn; path = ../../../3DSnakeAR/3DSnake/main.scn; sourceTree = "<group>"; };
 		7D43C9BF20442F2D00CB2FF1 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		7DF543D72045DDF800C172FD /* worldScene.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = worldScene.scn; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,7 @@
 		7D43C9992044255800CB2FF1 /* app assets */ = {
 			isa = PBXGroup;
 			children = (
-				7D0A6AB020443C27002E5E0E /* worldScene.scn */,
+				7DF543D72045DDF800C172FD /* worldScene.scn */,
 				7D43C99A204425B300CB2FF1 /* bokeh.png */,
 				7D43C9A0204425B400CB2FF1 /* crashed-snake.scnp */,
 				7D43C9A3204425B400CB2FF1 /* mushroom-appear.scnp */,
@@ -120,7 +120,7 @@
 			children = (
 				7D43C9B32044260300CB2FF1 /* GameController.swift */,
 				7D43C9B42044260300CB2FF1 /* Mushroom.swift */,
-				7D43C9B52044260300CB2FF1 /* Snake.swift */,
+				7D43C9B52044260300CB2FF1 /* SnakeController.swift */,
 			);
 			path = "base classes";
 			sourceTree = "<group>";
@@ -190,11 +190,11 @@
 				7D43C9A6204425B400CB2FF1 /* bokeh.png in Resources */,
 				7D43C9AD204425B400CB2FF1 /* Assets.xcassets in Resources */,
 				7D43C9BA2044266400CB2FF1 /* main.scn in Resources */,
+				7DF543D82045DDF800C172FD /* worldScene.scn in Resources */,
 				7D43C9A7204425B400CB2FF1 /* smoke.png in Resources */,
 				7D43C9AB204425B400CB2FF1 /* snake-body-shadow.png in Resources */,
 				7D2E5F9520441F7D00B4CBB3 /* LaunchScreen.storyboard in Resources */,
 				7D43C9A8204425B400CB2FF1 /* snakeTail.scn in Resources */,
-				7D0A6AB120443C27002E5E0E /* worldScene.scn in Resources */,
 				7D43C9A9204425B400CB2FF1 /* wall-shadow.png in Resources */,
 				7D43C9AF204425B400CB2FF1 /* mushroom-appear.scnp in Resources */,
 				7D43C9AC204425B400CB2FF1 /* crashed-snake.scnp in Resources */,
@@ -210,7 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D43C9B62044260400CB2FF1 /* GameController.swift in Sources */,
-				7D43C9B82044260400CB2FF1 /* Snake.swift in Sources */,
+				7D43C9B82044260400CB2FF1 /* SnakeController.swift in Sources */,
 				7D43C9B72044260400CB2FF1 /* Mushroom.swift in Sources */,
 				7D43C9C020442F2E00CB2FF1 /* GameViewController.swift in Sources */,
 				7D2E5F8520441F7D00B4CBB3 /* AppDelegate.swift in Sources */,
