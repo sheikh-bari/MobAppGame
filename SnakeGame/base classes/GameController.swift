@@ -15,7 +15,8 @@ final class GameController {
     var snake: SnakeController = SnakeController()
     
     private var points: Int = 0
-    private var mushroomPos: int2 = int2(0, 0)
+    private var warmNode: Warm
+    private var warmPos: int2 = int2(0, 0)
     private var gameOver: Bool = false
     
     weak var delegate: GameControllerDelegate?
@@ -29,12 +30,15 @@ final class GameController {
             pointsNode?.pivot = SCNMatrix4MakeTranslation(5, 0, 0)
             pointsText = pointsNode?.geometry as? SCNText
         }
+        warmNode = Warm()
     }
     
     func reset() {
         gameOver = false
         points = 1
         snake.reset()
+        worldSceneNode?.addChildNode(warmNode)
+        placeWarm()
     }
     
     
@@ -42,12 +46,33 @@ final class GameController {
     func startGame() {
         timer?.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateSnake), userInfo: nil, repeats: true)
-        //let rotateAction = SCNAction.rotate(by: CGFloat.pi * 2, around: SCNVector3(0, 1, 0), duration: 10.0)
-        //pointsNode?.runAction(SCNAction.repeatForever(rotateAction))
     }
     
     @objc func updateSnake(timer: Timer) {
+        if snake.canMove(sceneSize: sceneSize) {
+            snake.move()
+            if snake.ateItself || !snake.canMove(sceneSize: sceneSize) {
+                gameOver = true
+                delegate?.gameOver(sender: self)
+                timer.invalidate()
+            }
 
+            if int2(snake.headPos.x-1, snake.headPos.y) == warmPos {
+                snake.grow()
+                placeWarm()
+            }
+        } else {
+            delegate?.gameOver(sender: self)
+        }
+        updatePoints(points: "\(snake.body.count - 4)")
+    }
+    
+    func turnRight() {
+        snake.turnRight()
+    }
+    
+    func turnLeft() {
+        snake.turnLeft()
     }
     
     func addToNode(rootNode: SCNNode) {
@@ -58,7 +83,8 @@ final class GameController {
         rootNode.addChildNode(worldScene)
         worldScene.scale = SCNVector3(0.1, 0.1, 0.1)
     }
-
+    
+    // MARK: - Helpers
     private func updatePoints(points: String) {
         guard let pointsNode = pointsNode else {
             return
@@ -69,5 +95,15 @@ final class GameController {
         pointsNode.position.x = -width / 2
     }
     
+    private func placeWarm() {
+        repeat {
+            let x = Int32(arc4random() % UInt32((sceneSize - 1))) - 7
+            let y = Int32(arc4random() % UInt32((sceneSize - 1))) - 7
+            warmPos = int2(x, y)
+        } while snake.body.contains(warmPos)
+        
+        warmNode.position = SCNVector3(Float(warmPos.x), 0, Float(warmPos.y))
+        warmNode.showWarm()
+    }
 }
 
